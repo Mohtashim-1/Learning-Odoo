@@ -6,7 +6,7 @@
         <field name="model">hospital.patient</field>
         <field name="priority">20</field>
         <field name="arch" type="xml">
-            <tree string="Patients" create="0" delete="0">
+            <tree string="Patients" create="0" delete="0" edit="0">
                 <field name="name" />
                 <field name="date_of_birth" />
                 <field name="gender" />
@@ -19,7 +19,7 @@
         <field name="name">hospital.patient.readonly.form</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
-            <form string="Patients" create="0" delete="0">
+            <form string="Patients" create="0" delete="0" edit="0">
             <sheet>
             <group>
                 <field name="name" />
