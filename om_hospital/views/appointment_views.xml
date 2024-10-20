@@ -7,6 +7,7 @@
         <field name="priority">20</field>
         <field name="arch" type="xml">
             <tree string="Appointments">
+                <field name="reference" />
                 <field name="patient_id" />
                 <field name="date_appintment" />
                 <field name="note" />
@@ -20,12 +21,22 @@
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
             <form string="Appointments" >
+            <header>
+            <button name="action_confirm" type="object" string="Confirm" class="btn-primary" />
+            <button name="action_ongoing" type="object" string="Ongoing" class="btn-primary" />
+            <button name="action_done" type="object" string="Done" class="btn-primary" />
+            <button name="action_cancelled" type="object" string="Cancelled" class="btn-primary" />
+            <field name="state" widget="statusbar" />
+
+            </header>
             <sheet>
             <group>
+                <field name="reference" readonly="True"/>
                 <field name="patient_id" />
-                <field name="date_appintment" optional="show" />
+                
             </group>
             <group>
+                <field name="date_appintment" optional="show" />
                 <field name="note" optional="hide" />
             </group>
             </sheet>
