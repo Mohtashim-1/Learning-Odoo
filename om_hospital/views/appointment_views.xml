@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- tree view -->
+    <record id="view_hospital_appointment_tree" model="ir.ui.view">
+        <field name="name">hospital.appointment.tree</field>
+        <field name="model">hospital.appointment</field>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <tree string="Appointments">
+                <field name="patient_id" />
+                <field name="date_appintment" />
+                <field name="note" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- form view -->
+    <record id="view_hospital_appointment_form" model="ir.ui.view">
+        <field name="name">hospital.appointment.form</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <form string="Appointments" >
+            <sheet>
+            <group>
+                <field name="patient_id" />
+                <field name="date_appintment" optional="show" />
+            </group>
+            <group>
+                <field name="note" optional="hide" />
+            </group>
+            </sheet>
+            
+            <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers"/>
+                <!-- <field name="activity_ids" widget="mail_activity"/> -->
+                <field name="message_ids" widget="mail_thread"/>
+            </div>
+                 
+            </form>
+        </field>
+    </record>
+
+
+
+    <!-- Define the action for the patient form and tree view -->
+    <record id="action_hospital_appointment" model="ir.actions.act_window">
+        <field name="name">Appointment</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_mode">tree,form</field>
+        
+       
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a New Appointment
+            </p>
+        </field>
+    </record>
+
+    <!-- Define the menu for accessing the patients -->
+    <menuitem id="menu_appointment" name="Appointment"
+              parent="menu_frontdesk" action="action_hospital_appointment"/>
+    
+</odoo>
