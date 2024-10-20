@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- tree view -->
+    <record id="view_hospital_patient_tree" model="ir.ui.view">
+        <field name="name">hospital.patient.tree</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <tree string="Patients">
+                <field name="name" />
+                <field name="date_of_birth" />
+                <field name="gender" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- form view -->
+    <record id="view_hospital_patient_form" model="ir.ui.view">
+        <field name="name">hospital.patient.form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form string="Patients">
+            <sheet>
+            <group>
+                <field name="name" />
+                <field name="date_of_birth" optional="show" />
+            </group>
+            <group>
+                <field name="gender" optional="hide" />
+            </group>
+            </sheet>
+            
+            <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers"/>
+                <!-- <field name="activity_ids" widget="mail_activity"/> -->
+                <field name="message_ids" widget="mail_thread"/>
+            </div>
+                 
+            </form>
+        </field>
+    </record>
+
+
+
+    <!-- Define the action for the patient form and tree view -->
+    <record id="action_hospital_patient" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="view_mode">tree,form</field>
+        
+        
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new patient
+            </p>
+        </field>
+    </record>
+
+    <!-- Define the menu for accessing the patients -->
+    <menuitem id="menu_hospital_patient" name="Patients"
+              parent="menu_frontdesk" action="action_hospital_patient"/>
+</odoo>
