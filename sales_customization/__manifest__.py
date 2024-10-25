@@ -1,15 +1,19 @@
 {
-    'name': 'Sales Customizations',
-    # 'version': '1.0',
+    'name': 'Sales Customization',
+    'version': '1.0',
     'category': 'Sales',
-    'summary': 'Custom fields for Sales module',
-    "author":"Mohtashim",
-    "version":"17.0.1.3",
-    "license":"LGPL-3",
-    'depends': ['base'],  # Make sure this module depends on the 'sale' module
-    # 'data': [
-    #     'views/sale_order_view.xml',  # Reference to the view file
-    # ],
+    'summary': 'Custom Fields for Product Template',
+    'description': 'This module adds custom fields to the Product Template (Item Master).',
+    'depends': ['base', 'product', 'sale_management'],  # Make sure the sale module is included
+    'data': [
+        'views/product_template_view.xml',
+        'views/packaging_details.xml',
+        'views/sale_order_line.xml',
+        # 'views/sale_order.xml',
+        'views/menu.xml',
+    ],
     'installable': True,
     'application': False,
+    'auto_install': False,
+    'license': 'LGPL-3',
 }

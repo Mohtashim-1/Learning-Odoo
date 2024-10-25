@@ -22,11 +22,11 @@
         <field name="arch" type="xml">
             <form string="Appointments" >
             <header>
-            <button name="action_confirm" type="object" string="Confirm" class="btn-primary" />
-            <button name="action_ongoing" type="object" string="Ongoing" class="btn-primary" />
-            <button name="action_done" type="object" string="Done" class="btn-primary" />
-            <button name="action_cancelled" type="object" string="Cancelled" class="btn-primary" />
-            <field name="state" widget="statusbar" />
+            <button name="action_confirm" type="object" string="Confirm" class="btn-primary" invisible="state != 'draft' " />
+            <button name="action_ongoing" type="object" string="Ongoing" class="btn-primary" invisible="state != 'confirmed' " />
+            <button name="action_done" type="object" string="Done" class="btn-primary" invisible="state != 'ongoing' " />
+            <button name="action_cancelled" type="object" string="Cancelled" class="btn-primary" invisible="state == 'done' "  />
+            <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,ongoing,done" />
 
             </header>
             <sheet>
